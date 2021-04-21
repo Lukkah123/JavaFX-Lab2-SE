@@ -99,4 +99,13 @@ public class DBHandler {
         return null;
     }
 
+    public void updateBalance(int id, double balance) {
+        String query = "UPDATE `atm`.`account` SET `balance` = '" + balance + "' WHERE (`idaccount` = '" + id + "');";
+        try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
